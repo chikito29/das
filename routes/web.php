@@ -16,7 +16,3 @@ Route::get('home', 'PageController@showHome');
 
 Route::get('login', 'NAController@login');
 Route::get('callback', 'NAController@callback');
-
-Route::get('test', function(){
-  return 'sample';
-});
