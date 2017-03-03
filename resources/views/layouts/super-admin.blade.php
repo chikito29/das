@@ -15,6 +15,18 @@
     <link rel="stylesheet" type="text/css" id="theme" href="/css/theme-dark-head-light.css"/>
     <!-- EOF CSS INCLUDE -->
 
+    <style>
+    #footer {
+        position:fixed;
+        left:0px;
+        bottom:0px;
+        height:30px;
+        width:100%;
+        padding-top: 5px;
+        color: #636b6f;
+    }
+    </style>
+
     @yield('head-scripts')
 
 </head>
@@ -30,18 +42,20 @@
                 <a href="index.html">DAS</a>
                 <a href="#" class="x-navigation-control"></a>
             </li>
-            <li class="xn-openable">
-                <a href="#"><span class="fa fa-home"></span> <span class="xn-text">Home</span></a>
+            <li class="@yield('nav-home')">
+                <a href="/home"><span class="fa fa-home"></span> <span class="xn-text">Home</span></a>
             </li>
-            <li class="xn-openable">
+            <li class="xn-openable @yield('nav-search')">
+                <a href="/search"><span class="fa fa-search"></span> <span class="xn-text">Search</span></a>
+            </li>
+            <li class="xn-openable @yield('nav-add-document')">
                 <a href="#"><span class="fa fa-book"></span> <span class="xn-text">Documents</span></a>
                 <ul class="animated zoomIn">
-                    <li><a href="layout-boxed.html"><span class="fa fa-bars"></span> List</a></li>
-                    <li><a href="layout-nav-toggled.html"><span class="fa fa-file"></span> Create</a></li>
-                    <li><a href="layout-nav-toggled-hover.html"><span class="fa fa-edit"></span> Edit</a></li>
+                    <li><a href="ui-widgets.html"><span class="fa fa-info-circle"></span> Create Properties</a></li>
+                    <li><a href="/documents/create"><span class="fa fa-plus"></span> Upload</a></li>
                 </ul>
             </li>
-            <li class="xn-openable">
+            <li class="xn-openable @yield('nav-departments')">
                 <a href="#"><span class="fa fa-sitemap"></span> <span class="xn-text">Departments</span></a>
                 <ul class="animated zoomIn">
                     <li><a href="ui-widgets.html"><span class="fa fa-bars"></span> List</a></li>
@@ -49,15 +63,14 @@
                     <li><a href="ui-buttons.html"><span class="fa fa-edit"></span> Edit</a></li>
                 </ul>
             </li>
-            <li class="xn-openable">
-                <a href="#"><span class="fa fa-bell"></span> <span class="xn-text">Notifications</span></a>
+            <li class="xn-openable @yield('nav-notifications')">
+                <a href="/notifications"><span class="fa fa-bell"></span> <span class="xn-text">Notifications</span></a>
             </li>
 
             <!-- POWER OFF -->
             <li class="xn-icon-button pull-right last">
                 <a href="#"><span class="fa fa-power-off"></span></a>
                 <ul class="xn-drop-left animated zoomIn">
-                    <li><a href="pages-lock-screen.html"><span class="fa fa-lock"></span> Lock Screen</a></li>
                     <li><a href="#" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span> Sign Out</a></li>
                 </ul>
             </li>
@@ -80,10 +93,6 @@
         <div class="page-content-wrap">
 
             @yield('page-content-wrapper')
-
-            <div class="x-content-footer">
-                Copyright © 2017 NEWSIM. All rights reserved
-            </div>
 
         </div>
         <!-- END PAGE CONTENT WRAPPER -->
@@ -131,6 +140,7 @@
 <!-- THIS PAGE PLUGINS -->
 <script type='text/javascript' src='/js/plugins/icheck/icheck.min.js'></script>
 <script type="text/javascript" src="/js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
+@yield('this-page-plugins')
 <!-- END PAGE PLUGINS -->
 
 <!-- START TEMPLATE -->
