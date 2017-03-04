@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDocumentsTable extends Migration
+class CreatePropertyValuesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateDocumentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('documents', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('category_id');
-            $table->string('type');
-            $table->string('title');
-            $table->softDeletes();
+        Schema::create('property_values', function (Blueprint $table) {
+            $table->integer('document_id');
+            $table->integer('property_id');
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ class CreateDocumentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('documents');
+        Schema::dropIfExists('property_values');
     }
 }
